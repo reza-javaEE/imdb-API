@@ -18,7 +18,7 @@ public class FileVerificationSkipper implements SkipPolicy {
 
     @Override
     public boolean shouldSkip(Throwable exception, int skipCount) throws SkipLimitExceededException {
-        //todo Exception handling
+        //todo control the file records and handle Exceptions
         if (exception instanceof FileNotFoundException) {
             logger.error("file not found exception");
             return false;

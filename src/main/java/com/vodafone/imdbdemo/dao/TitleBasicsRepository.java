@@ -11,14 +11,23 @@ import java.util.List;
 @Repository
 public interface TitleBasicsRepository extends JpaRepository<TitleBasics, String> {
 
-    @Query(value = "SELECT * FROM titlebasics tb INNER JOIN titleprincipals tp ON tp.tconst = tb.tconst INNER JOIN namebasics nb ON tp.nconst = nb.nconst WHERE nb.primaryName IN (:actor1, :actor2) GROUP BY tb.primaryTitle HAVING count(tb.tconst) > 1 ", nativeQuery = true)
+    @Query(value = "SELECT * FROM titlebasics tb " +
+            "INNER JOIN titleprincipals tp ON tp.tconst = tb.tconst " +
+            "INNER JOIN namebasics nb ON tp.nconst = nb.nconst " +
+            "WHERE nb.primaryName IN (:actor1, :actor2) " +
+            "GROUP BY tb.primaryTitle HAVING count(tb.tconst) > 1 ", nativeQuery = true)
     List<TitleBasics> findTitleByActorsName(@Param("actor1") String actor1, @Param("actor2") String actor2);
 
 
-    @Query(value = "\n" +
+   /* @Query(value = "\n" +
             "SELECT * FROM `titlebasics` WHERE `tconst` IN (\n" +
             "            SELECT `tconst` FROM `titleprincipals` WHERE `nconst` IN(\n" +
-            "            SELECT `nconst` FROM `namebasics` WHERE `primaryName`= :actor))", nativeQuery = true)
+            "            SELECT `nconst` FROM `namebasics` WHERE `primaryName`= :actor))", nativeQuery = true)*/
+
+    @Query(value = "SELECT tb.* FROM mydb.`titlebasics` tb " +
+            "inner join mydb.`titleprincipals` tp on tb.tconst = tp.tconst " +
+            "inner join mydb.`namebasics` nb on nb.nconst = tp.nconst " +
+            "where nb.`primaryName` = :actor ", nativeQuery = true)
     List<TitleBasics> findMovieDetailsByActorName(@Param("actor") String actor);
 
 
