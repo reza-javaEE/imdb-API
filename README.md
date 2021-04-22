@@ -1,6 +1,6 @@
 # imdb-demo-2021
 
-This assessment is based on the popular website IMDb which offers movies and TV shows information. They have kindly made their dataset publicly available at IMDb Datasets. Your mission, should you choose to accept it, is to write a web application in Java that can fulfil the following requirements:
+This project is based on the popular website IMDb which offers movies and TV shows information. They have kindly made their dataset publicly available at IMDb Datasets. Your mission, should you choose to accept it, is to write a web application in Java that can fulfil the following requirements:
 
  ●1.. Two Actor / Actress names are entered.  It is informed whether the two names played in the same movie.
  ●2.. Actor / Actress name entered.  Returning the details found about the movie he played.
